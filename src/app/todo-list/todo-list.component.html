@@ -2,7 +2,7 @@
     <ul>
         <li *ngFor="let todo of todoList$ | async" class="p-4 border border-blue-300 my-1 flex justify-between items-center">
             <p class="font-semibold">{{ todo.content }}</p>
-            <button type="button" class="bg-red-500 text-white p-1 rounded-md">
+            <button type="button" class="bg-red-500 text-white p-1 rounded-md" (click)="deleteTask(todo.id)">
                 Delete
             </button>
         </li>

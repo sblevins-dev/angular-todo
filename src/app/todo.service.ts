@@ -40,4 +40,12 @@ export class TodoService {
       })
     );
   }
+
+  deleteTask(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/delete_tasks/${id}`).pipe(
+      tap(res => {
+        this.todoListSubject.next(this.todoListSubject.value.filter(task => task.id !== id));
+      })
+    )
+  }
 }

@@ -18,8 +18,12 @@ export class TodoListComponent implements OnInit {
   ngOnInit(): void {
     // this.todoList$ = this.todoService.getTasks();
     this.todoList$.subscribe(tasks => {
-      console.log("Tasks in component: ", tasks)
+      // console.log("Tasks in component: ", tasks)
     });
+  }
+
+  deleteTask(id: number): void {
+    this.todoService.deleteTask(id).subscribe();
   }
 
   // getTasks(): void {

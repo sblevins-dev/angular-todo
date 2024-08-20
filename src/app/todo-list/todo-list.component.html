@@ -1,0 +1,17 @@
+<section>
+    @if (todoList.length > 0) {
+        <ul>
+            @for (item of todoList; track item.id) {
+            <li class="p-4 border border-blue-300 my-1 flex justify-between items-center">
+                <p class="font-semibold">{{ item.content }}</p>
+                <button type="button" (click)="deleteTodo(item.id)" class="bg-red-500 text-white p-1 rounded-md">
+                    Delete
+                </button>
+            </li>
+            }
+        </ul>
+    }
+    @else {
+        <p>Nothing in Todo List</p>
+    }
+</section>

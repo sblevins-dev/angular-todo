@@ -2,8 +2,8 @@
     <div class="w-1/2">
         <h1 class="text-lg font-semibold">Add Todo</h1>
         <span class="flex gap-2 items-center">
-            <input type="text" class=" h-max border border-black p-2">
-            <button type="button" class="bg-slate-600 text-white p-2 rounded-md w-max">
+            <input type="text" id="new-task" class=" h-max border border-black p-2" #task>
+            <button type="button" class="bg-slate-600 text-white p-2 rounded-md w-max" (click)="addTask(task.value)">
                 Add Todo
             </button>        
         </span>

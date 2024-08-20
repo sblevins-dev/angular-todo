@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { TodoService } from '../todo.service';
+import { Todo } from '../todo';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-todo-list',
@@ -8,20 +11,16 @@ import { Component } from '@angular/core';
   styleUrl: './todo-list.component.css'
 })
 export class TodoListComponent {
-  todoList = [
-    {
-      id: 1,
-      content: "Buy groceries",
-    },
-    {
-      id: 2,
-      content: "Pay bills"
-    }
-  ]
+  todoList: Todo[] = [];
+  todoService: TodoService = inject(TodoService);
 
-  deleteTodo(id: number) {
-    this.todoList = this.todoList.filter(todo => todo.id !== id)
+  constructor() {}
 
-    console.log(this.todoList)
+  ngOnInit() {
+    this.getTasks();
+  }
+
+  getTasks(): void {
+    this.todoService.getTasks().subscribe(todoList => this.todoList = todoList);
   }
 }
